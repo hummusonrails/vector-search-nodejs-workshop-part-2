@@ -55,7 +55,8 @@ Your backend will:
    ```bash
    npm install
    ```
-3. Start the backend:
+3. Finish the code as instructed in `backend/services/couchbaseService.js`. 
+4. Start the backend:
     ```bash
     node server.js
     ```
@@ -86,7 +87,7 @@ OPENAI_API_KEY=your-api-key
 
 ## Run and Test the Application
 
-Once everything is connected, you can run both the frontend and backend together:
+Once everything is connected and you have finished building the functionality, you can run both the frontend and backend together:
 
 1. Ensure the backend (node server.js in backend) and frontend (npm run dev in frontend) servers are running.
 2. Visit the frontend URL in your browser.

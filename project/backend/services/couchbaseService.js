@@ -30,22 +30,22 @@ export async function getRelevantDocumentIds(embedding) {
   const { cluster } = await initCouchbase()
   const scope = cluster.bucket(COUCHBASE_BUCKET_NAME).scope('_default');
   
-  let request = SearchRequest.create(
-    VectorSearch.fromVectorQuery(
-        VectorQuery.create('_default.embedding', embedding).numCandidates(3)
-    )
-  );
+    // Step 1: Import the necessary functions or modules required for the implementation.
+    // (e.g., `initCouchbase`, `SearchRequest`, `VectorSearch`, and `VectorQuery`)
 
-  const result = await scope.search(COUCHBASE_SEARCH_INDEX_NAME, request);
+    // Step 2: Initialize a Couchbase cluster by calling a helper function (e.g., `initCouchbase()`).
+    // Ensure that the cluster is connected to the correct bucket and scope (e.g., `_default` scope).
 
-  console.log(`Result: ${JSON.stringify(result)}`);
+    // Step 3: Create a search request using Couchbase's vector search capabilities:
+    // - Use `VectorQuery` to specify the vector field (e.g., `_default.embedding`) and the input embedding.
+    // - Limit the number of candidates returned (e.g., `numCandidates(3)`).
+    // - Use `VectorSearch.fromVectorQuery` to build the search query and include it in the `SearchRequest.create`.
 
-  return result.rows.map(row => {
-    return {
-        id: row.id,
-        score: row.score
-    };
-  });
+    // Step 4: Execute the search query using the `search` method of the scope, passing the index name and search request.
+    // Capture the result of the query.
+
+    // Step 5: Map the search result rows to extract relevant information (e.g., document ID and score).
+    // Return an array containing the extracted information.
 }
 
 export async function getRelevantDocuments(embedding) {
@@ -54,28 +54,18 @@ export async function getRelevantDocuments(embedding) {
     const collection = bucket.defaultCollection();
 
     const storedEmbeddings = await getRelevantDocumentIds(embedding);
-  
-    const results = await Promise.all(
-      storedEmbeddings.map(async ({ id, score }) => {
-        try {
-          const result = await collection.get(id);
-          const content = result.content;
-          
-          // Remove embedding from content
-          if (content && content._default && content._default.embedding) {
-            delete content._default.embedding;
-          }
-  
-          return {
-            content: content,
-            score: score 
-          };
-        } catch (err) {
-          console.error(`Error fetching document with ID ${id}:`, err);
-          return null;
-        }
-      })
-    );
-  
-    return results.filter(doc => doc !== null); 
+
+    // Step 1: Use `Promise.all` to process each document ID returned from `storedEmbeddings` asynchronously.
+    // - For each document, fetch its content using the `collection.get` method with the document ID.
+
+    // Step 2: Once the document is fetched, access its content.
+    // - Check if the content contains the embedding field (e.g., `_default.embedding`) and remove it for efficiency.
+
+    // Step 3: Return the document content and its associated score in a structured object.
+
+    // Step 4: Handle errors gracefully.
+    // - If fetching a document fails, log an error and ensure the process continues without interruption.
+
+    // Step 5: Filter out any null or invalid results to ensure only valid documents are included in the returned results.
 }
+

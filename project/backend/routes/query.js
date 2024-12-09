@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
 
     const documents = await getRelevantDocuments(embedding)
 
-    // Step 3: Construct the prompt
+    // Construct the prompt
     const prompt = `
       You are an expert on the Star Wars universe.
       Given the user query and the following relevant documents, provide a helpful and accurate answer.
@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
     res.setHeader('Content-Type', 'text/plain; charset=utf-8')
     res.setHeader('Transfer-Encoding', 'chunked')
 
-    // Step 4: Get a streaming completion
+    // Get a streaming completion
     const stream = await getCompletionStream(prompt)
 
     // Iterate over the streamed chunks and send them to the client as they arrive
