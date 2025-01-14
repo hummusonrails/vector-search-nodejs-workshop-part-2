@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 
-const BACKEND_URL = 'http://localhost:3001'
+const BACKEND_URL = 'https://orange-guide-x5vwp5j95pp3p557-3001.app.github.dev';
 
 export default function Chat() {
   const [messages, setMessages] = useState([])
@@ -32,7 +32,7 @@ export default function Chat() {
       const response = await fetch(`${BACKEND_URL}/api/query`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ q: input })
       })
