@@ -32,7 +32,7 @@ export default function Chat() {
       const response = await fetch(`${BACKEND_URL}/api/query`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ q: input })
       })

@@ -9,6 +9,7 @@
         "start": "node server.js"
     },
     "dependencies": {
+        "@huggingface/inference": "^2.8.1",
         "axios": "^1.7.9",
         "cors": "^2.8.5",
         "couchbase": "^4.4.4",

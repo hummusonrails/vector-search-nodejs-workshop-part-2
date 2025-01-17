@@ -26,4 +26,4 @@ dist-ssr
 # Environment Variables
 
 # .env files in any path and folder
-.env*
+.env

@@ -76,7 +76,11 @@ COUCHBASE_SEARCH_INDEX_NAME=your-index-name
 COUCHBASE_BUCKET_NAME=your-bucket-name
 ```
 
-## Integrate OpenAI for RAG
+## Integrate a Model for RAG
+
+You can choose to either use OpenAI's API or a HuggingFace model for RAG. The OpenAI API costs money, whereas HuggingFace provides a free tier to remotely access their models.
+
+### OpenAI
 
 To transform user queries into embeddings and generate responses using retrieved context from Capella, you’ll integrate OpenAI’s API.
 
@@ -85,6 +89,32 @@ Verify you have your OpenAI API key defined in `.env` file in the `backend` dire
 ```env
 OPENAI_API_KEY=your-api-key
 ```
+
+In the `backend` directory, modify the `openaiService.js` file to specify you are using a `openai` model and not HuggingFace:
+
+```javascript
+let modelPreference = 'openai';
+```
+
+Proceed to the [Run and Test the Application](#run-and-test-the-application) section.
+
+### HuggingFace
+
+To transform user queries into embeddings and generate responses using retrieved context from Capella, you’ll integrate HuggingFace's API.
+
+Verify you have your HuggingFace API key defined in `.env` file in the `backend` directory:
+
+```env
+HUGGINGFACE_API_KEY=your-api-key
+```
+
+In the `backend` directory, modify the `openaiService.js` file to specify you are using a `local` model and not OpenAI:
+
+```javascript
+let modelPreference = 'local';
+```
+
+Proceed to the [Run and Test the Application](#run-and-test-the-application) section.
 
 ## Run and Test the Application
 
