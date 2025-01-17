@@ -20,7 +20,7 @@ In this second part of the workshop, we will build upon the data and vector embe
 1. [Set Up the Frontend (React)](#set-up-the-frontend-react)
 2. [Set Up the Backend (Node.js)](#set-up-the-backend-nodejs)
 3. [Integrate Capella Vector Search](#integrate-capella-vector-search)
-4. [Integrate OpenAI for RAG](#integrate-openai-for-rag)
+4. [Integrate an Embedding Model for RAG](#integrate-an-embedding-model-for-rag)
 5. [Run and Test the Application](#run-and-test-the-application)
 
 ## Set Up the Frontend (React)
@@ -76,7 +76,7 @@ COUCHBASE_SEARCH_INDEX_NAME=your-index-name
 COUCHBASE_BUCKET_NAME=your-bucket-name
 ```
 
-## Integrate a Model for RAG
+## Integrate an Embedding Model for RAG
 
 You can choose to either use OpenAI's API or a HuggingFace model for RAG. The OpenAI API costs money, whereas HuggingFace provides a free tier to remotely access their models.
 
